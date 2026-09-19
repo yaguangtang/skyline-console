@@ -38,6 +38,10 @@ const MonitoringChart = ({ data, isNetwork, range, title, unitType }) => {
   const scale = {
     x: getXScale(range),
     y: {
+      // Libvirt can report a constant RSS value for the entire selected
+      // range.  Include zero so G2 has a real domain and draws that line
+      // above the baseline instead of collapsing it onto the x-axis.
+      min: 0,
       nice: true,
       formatter: (value) => {
         if (unitType === 'percentage') {

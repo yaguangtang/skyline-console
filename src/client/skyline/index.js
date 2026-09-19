@@ -140,6 +140,21 @@ export class SkylineClient extends Base {
         key: 'query_range',
       },
       {
+        name: 'instanceMonitoring',
+        key: 'prometheus',
+        isResource: false,
+        extendOperations: [
+          {
+            key: 'get',
+            generate: (serverId, params) =>
+              this.request.get(
+                `prometheus/instance/${serverId}/monitoring`,
+                params
+              ),
+          },
+        ],
+      },
+      {
         key: 'sso',
       },
       {

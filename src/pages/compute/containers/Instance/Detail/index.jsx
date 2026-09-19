@@ -31,6 +31,7 @@ import ActionLog from './ActionLog';
 import Snapshots from '../../InstanceSnapshot';
 import actionConfigs from '../actions';
 import Log from './Log';
+import Monitor from './Monitor';
 
 export class InstanceDetail extends Base {
   get name() {
@@ -154,6 +155,11 @@ export class InstanceDetail extends Base {
         key: 'logs',
         component: Log,
       },
+      {
+        title: t('Monitoring'),
+        key: 'monitoring',
+        component: Monitor,
+      },
     ];
     if (this.enableCinder) {
       tabs.splice(1, 0, {
@@ -165,7 +171,9 @@ export class InstanceDetail extends Base {
     if (isIronicInstance(this.detailData)) {
       return tabs.filter(
         (it) =>
-          it.key !== 'volumes' && it.key !== 'snapshots' && it.key !== 'monitor'
+          it.key !== 'volumes' &&
+          it.key !== 'snapshots' &&
+          it.key !== 'monitoring'
       );
     }
     return tabs;

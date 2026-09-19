@@ -7,7 +7,7 @@ FROM node:12-buster AS builder
 WORKDIR /src
 
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN yarn install --non-interactive
 
 COPY . ./
 

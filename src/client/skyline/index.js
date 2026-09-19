@@ -148,7 +148,7 @@ export class SkylineClient extends Base {
             key: 'get',
             generate: (serverId, params) =>
               this.request.get(
-                `prometheus/instance/${serverId}/monitoring`,
+                `instance/${serverId}/monitoring`,
                 params
               ),
           },

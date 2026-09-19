@@ -7,8 +7,7 @@ FROM node:12-buster AS builder
 WORKDIR /src
 
 COPY package.json yarn.lock ./
-RUN npm install --global yarn@1.22.22 \
-    && yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile
 
 COPY . ./
 
